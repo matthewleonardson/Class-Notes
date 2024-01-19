@@ -1,0 +1,63 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\}
+\usepackage[a4paper,margin=3.5cm]{geometry}
+\usepackage{url}
+\usepackage{dirtytalk}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage[T1]{fontenc}
+\setlength{\parskip}{1em}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tcolorbox}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{amsthm}
+
+
+
+% Lets you use \blankpage to make a blank page
+\newcommand{\blankpage}{
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\newpage
+}
+
+% Define a slanted theorem style
+\newtheoremstyle{sltheorem}
+{}                % Space above
+{}                % Space below
+{}        % Theorem body font % (default is "\upshape")
+{}                % Indent amount
+{\bfseries}       % Theorem head font % (default is \mdseries)
+{.}               % Punctuation after theorem head % default: no punctuation
+{ }               % Space after theorem head
+{}                % Theorem head spec
+\theoremstyle{sltheorem}
+
+% Theorems
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{fact}[theorem]{Fact}
+
+% List stuff
+\setlist[enumerate]{topsep=0pt}
+\setlist[itemize]{topsep=0pt}
+
+% Title stuff
+\title{Notes Template}
+\date{Season 20xx}
+\author{Me}
+
+\begin{document}
+\maketitle
+
+\section{Template}
+
+\end{document}

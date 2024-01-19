@@ -1,0 +1,1 @@
+Blank templates to use for other classes and such. If I update something in the class notes I'll update it here, but probably not in other class notes unless useful.

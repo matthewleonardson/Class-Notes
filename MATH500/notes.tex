@@ -1,0 +1,137 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\}
+\usepackage[a4paper,margin=3.5cm]{geometry}
+\usepackage{url}
+\usepackage{dirtytalk}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage[T1]{fontenc}
+\setlength{\parskip}{1em}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tcolorbox}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{amsthm}
+
+
+% Lets you use \blankpage to make a blank page
+\newcommand{\blankpage}{
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\newpage
+}
+
+% Define a slanted theorem style
+\newtheoremstyle{sltheorem}
+{}                % Space above
+{}                % Space below
+{}                % Theorem body font % (default is "\upshape")
+{}                % Indent amount
+{\bfseries}       % Theorem head font % (default is \mdseries)
+{.}               % Punctuation after theorem head % default: no punctuation
+{ }               % Space after theorem head
+{}                % Theorem head spec
+\theoremstyle{sltheorem}
+
+
+% Theorems
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{fact}[theorem]{Fact}
+
+
+% List stuff
+\setlist[enumerate]{topsep=0pt}
+\setlist[itemize]{topsep=0pt}
+
+% Title stuff
+\title{MATH500}
+\date{Spring 2024}
+\author{Matthew Leonardson}
+
+\begin{document}
+\maketitle
+
+\section{January 17, 2024}
+
+\begin{definition}\label{group_def}
+    A \textit{group} is a set $G$ with a binary operation such that 
+    \begin{enumerate}
+        \item $(xy)z = x(yz)$ for all $x, y, z \in G$.
+        \item There exists $e \in G$, the identity.
+        \item For all $x \in G$ there exists $x^{-1}$ such that $x x^{-1} = e = x^{-1} x$. 
+    \end{enumerate}
+    Further, a group is \textit{abelian} if \begin{enumerate}[resume]
+        \item $xy = yx$ for all $x, y \in G$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    A \textit{monoid} is a set $M$ and a binary operation that only satisfy the first two axioms of~\ref{group_def}.
+\end{definition}
+
+\begin{example}
+    The following are examples of groups
+    \begin{itemize}
+        \item $C_n$: the cyclic group of order $n$. Written multiplicatively.
+        \item $\mathbb{Z}/n$: the integers modulo $n$. Identical to $C_n$, but written additively.
+        \item $D_{2n}$: the dihedral group\footnote{Some authors use $D_n$ for the dihedral group of order $2n$.} of order $2n$. Defined in~\ref{dihedral_def}.
+        \item $S_n$: the symmetric group of degree $n$. All permuations of $n$ numbers with the group operation being function composition.
+        \item $GL_n(k)$: the general linear group of degree $n$. All invertible $n \times n$ matrices over a field $k$.
+        \item $Q_8$: the quaternion group. Defined in~\ref{quaternion_def}.
+    \end{itemize}
+
+\end{example}
+
+\begin{definition}\label{dihedral_def}
+    The \textit{dihedral group} of order $2n$ is the group of rotational symmetries of a regular $n$-gon in 3D space. More abstractly, it is a group with elements $\{r, s\}$ such that $r^n = s^2 = e$ and $rs = sr^{-1}$.
+\end{definition}
+
+\begin{remark}
+Bridging these two interpretations of the dihedral group, we can think of $r$ as being a rotation of the $n$-gon and $s$ as being a flipping of the $n$-gon.
+\end{remark}
+
+\begin{definition}\label{quaternion_def}
+The \textit{quaternion group} is the set $\{\pm 1, \pm i, \pm j, \pm k\}$ and multiplication defined such that ${(-1)}^2 = 1$ and $i^2 = j^2 = k^2 = ijk = -1$.
+\end{definition}
+
+\begin{definition}
+    Given a group $G$ and subset $H$, we say $H$ is a \textit{subgroup} if 
+    \begin{enumerate}
+        \item $H$ is not empty.\footnote{This is equivalent to $e \in H$.}
+        \item $x \in H$ implies $x^{-1} \in H$.
+        \item $x, y \in H$ implies $xy \in H$. 
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    For a group $G$ and $S \subseteq G$, the subgroup \textit{generated} by $S$ is \[\langle S \rangle = \bigcap_{\substack{H \leq G \\ S \subseteq H}} H.\]
+\end{definition}
+
+\begin{fact}
+    For a group $G$ and $S \subseteq G$, $\langle S \rangle$ is a subgroup of $G$.
+\end{fact}
+
+\begin{definition}\label{word_def}
+    Given a group $G$ and $S \subseteq G$, a \textit{word} in $S$ is $g \in G$ written $g = g_1 g_2 \dots g_n$ where $g_i \in S$ or $g_i^{-1} \in S$. 
+\end{definition}
+
+\begin{fact}
+    For a group $G$ and $S \subseteq G$, the set of words in $S$ is $\langle S \rangle$.
+\end{fact}
+
+\begin{definition}
+    A group $G$ is cylic if there exists $a \in G$ such that $G = \langle a \rangle$.\footnote{This is abuse of notation, as we should write $\langle \{a\} \rangle$. However, this is rarely done.} 
+\end{definition}
+
+
+
+
+\end{document}
