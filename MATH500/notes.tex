@@ -128,10 +128,67 @@ The \textit{quaternion group} is the set $\{\pm 1, \pm i, \pm j, \pm k\}$ and mu
 \end{fact}
 
 \begin{definition}
-    A group $G$ is cylic if there exists $a \in G$ such that $G = \langle a \rangle$.\footnote{This is abuse of notation, as we should write $\langle \{a\} \rangle$. However, this is rarely done.} 
+    A group $G$ is cyclic if there exists $a \in G$ such that $G = \langle a \rangle$.\footnote{This is abuse of notation, as we should write $\langle \{a\} \rangle$. However, this is rarely done.} 
 \end{definition}
 
+\begin{fact}
+The order of $g \in G$ is equal to the cardinality of $\langle g \rangle$.
+\end{fact}
 
+\begin{definition}
+    Given $H \leq G$, a \textit{left coset} is $S \subseteq G$ where, for some $x \in G$, $S = xH = \{xh \mid h \in H\}$.
+\end{definition}
 
+\begin{definition}
+    A \textit{right} coset of $G$ is $T \subseteq G$ such that $T = Hx$, for some $x \in G$.
+\end{definition}
+
+\begin{definition}
+    $G/H$ is the set of all left cosets of $G$, and $H \backslash G$ is the set of all right cosets of $G$.
+\end{definition}
+
+\begin{fact}
+    All cosets have the same cardinality, meaning there is a bijection between any $2$ cosets.
+\end{fact}
+
+\begin{fact}
+    $G/H$ and $H \backslash G$ have the same cardinality.
+\end{fact}
+
+\begin{definition}
+    The \textit{index} of $H$ in $G$ is $|G / H|$ and written $|G : H|$.
+\end{definition}
+
+\begin{theorem}[Lagrange]
+    $H \leq G$ implies $|G| = |H| \cdot |G : H|$
+\end{theorem}
+
+\begin{corollary}
+    Given $K \leq H \leq G$, it holds that $|G : K| = |G : H| \cdot |H : K|$.
+\end{corollary}
+
+\begin{definition}
+    A \textit{group homomorphism} is a function $\varphi: G \rightarrow H$ such that $\varphi(xy) = \varphi(x) \varphi(y)$.
+\end{definition}
+
+\begin{definition}
+    For a field $F$, the \textit{unit group} of $F$ is $F^{\times} = F \setminus \{0\}$.
+\end{definition}
+
+\begin{definition}
+    An \textit{isomorphism} is a bijective homomorphism.
+\end{definition}
+
+\begin{definition}
+    $N \leq G$ is \textit{normal} if $xNx^{-1} = N$ for all $x \in G$.
+\end{definition}
+
+\begin{fact}
+    For $\varphi: H \rightarrow G$ a  group homomorphism, $\ker(\varphi)$ is a normal subgroup of $H$.
+\end{fact}
+
+\begin{definition}
+    For $N$ a normal subgroup of $G$, the \textit{quotient group} $G/N$  is $N$-cosets of $G$ with multiplication defined by $xN \cdot yN = (xy)N$.
+\end{definition}
 
 \end{document}
