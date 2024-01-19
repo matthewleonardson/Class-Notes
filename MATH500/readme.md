@@ -1,0 +1,1 @@
+Lecture notes for the Spring 2024 section of MATH500 at UIUC.
