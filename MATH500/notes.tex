@@ -14,6 +14,12 @@
 \usepackage{mathtools}
 \usepackage{enumitem}
 \usepackage{amsthm}
+\usepackage{quiver}
+
+
+% Ensure commutative diagrams have proper sizing
+\tikzcdset{every label/.append style = {font = \normalsize}}
+
 
 
 % Lets you use \blankpage to make a blank page
@@ -191,4 +197,84 @@ The order of $g \in G$ is equal to the cardinality of $\langle g \rangle$.
     For $N$ a normal subgroup of $G$, the \textit{quotient group} $G/N$  is $N$-cosets of $G$ with multiplication defined by $xN \cdot yN = (xy)N$.
 \end{definition}
 
+\section{January 19, 2024}
+
+\begin{definition}
+    For a quotient group $G / N$, we have $\pi: G \rightarrow G / N$ called the \textit{quotient homomorphism} defined as $\pi(x) = xN$.
+\end{definition}
+
+\begin{theorem}[Homomorphism Theorem] If $\varphi: G \rightarrow H$ is a homomorphism such that for $N \trianglelefteq G$ we have $\varphi(N) = \{e \}$, then there exists a unique homomorphism $\psi: G/N \rightarrow H$ such that $\psi \circ \pi = \varphi$. Essentially, this diagram commutes.
+  % https://q.uiver.app/#q=WzAsMyxbMCwwLCJHIl0sWzAsMSwiRy9OIl0sWzEsMSwiSCJdLFswLDEsIlxccGkiLDJdLFsxLDIsIlxccHNpIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzAsMiwiXFx2YXJwaGkiXV0=
+\[\begin{tikzcd}
+	G \\
+	{G/N} & H
+	\arrow["\pi"', from=1-1, to=2-1]
+	\arrow["\psi"', dashed, from=2-1, to=2-2]
+	\arrow["\varphi", from=1-1, to=2-2]
+\end{tikzcd}\]
+\end{theorem}
+
+\begin{theorem}[First Isomorphism Theorem]\label{first_iso_thm}
+    Let $\varphi: G \rightarrow H$ be a group homomorphism. Let $N = \ker{(\varphi)}$. There exists an isomorphism $\bar{\varphi}: G/N \simeq \varphi(G)$.
+\end{theorem}
+
+\begin{remark}
+Further, following the same assumptions from~\ref{first_iso_thm}, $\varphi$ factors through this isomorphism $\bar{\varphi}: G/N \rightarrow \varphi(G)$ as seen in this diagram.
+
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJHIl0sWzAsMSwiRy9OIl0sWzIsMSwiXFx2YXJwaGkoRykiXSxbMiwwLCJIIl0sWzAsMywiXFx2YXJwaGkiXSxbMCwxLCJcXHBpIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzEsMiwiXFxiYXJcXHZhcnBoaSJdLFsyLDMsIiIsMSx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifX19XV0=
+\[\begin{tikzcd}
+	G && H \\
+	{G/N} && {\varphi(G)}
+	\arrow["\varphi", from=1-1, to=1-3]
+	\arrow["\pi"', two heads, from=1-1, to=2-1]
+	\arrow["\bar{\varphi}", from=2-1, to=2-3]
+	\arrow[tail, from=2-3, to=1-3]
+\end{tikzcd}\]
+\end{remark}
+
+\begin{theorem}\label{product_subset_thm}
+    Given $A, B \leq G$, the product subset $AB$ is a subgroup of $G$ if and only if $BA \subseteq AB$, and if so, $AB = BA$.
+\end{theorem}
+
+\begin{proof}
+    First, the forward direction. Assume $AB$ is a subgroup of $G$. Then $a \in A, b \in B$ implies $a \in AB$ and $b \in AB$. Thus, $ba \in AB$ by definition of a group, so $BA \subseteq AB$. 
+    Next, the other direction. Assume $BA \subseteq AB$. Then $e \in AB$ as $e \in A$ and $e \in B$. Also, $a \in A, b \in B$ implies $b^{-1} a^{-1} = {(ab)}^{-1} \in BA \subseteq AB$. Thus, $AB$ is closed under inverses. It is also straightforward to demonstrate that $AB$ is closed under product, satisfying all the subgroup axioms.
+\end{proof}
+
+\begin{definition}
+    Given $H \leq G$, define $N_G(H) = \{g \in G \mid gHG^{-1} = H\}$ as the \textit{normalizer} of $H$ in $G$. 
+\end{definition}
+
+\begin{fact}
+    $N_G(H) \leq G$ and $H \trianglelefteq N_G(H)$.
+\end{fact}
+
+\begin{corollary}
+    Given $A, B \leq G$ and $A \leq N_G(B)$, it holds that $AB = BA$ and $B \trianglelefteq AB$.
+\end{corollary}
+
+\begin{proof}
+    Because $A \leq N_G(B)$, it holds that for all $a \in AB$, $aBa^{-1} = B$ (notice that any $b \in B$ trivially normalizes $B$). Thus, $B \trianglelefteq AB$. Further, this normality implies $aB = Ba$ for all $a$, which is equivalent to $BA \subseteq AB$, and by~\ref{product_subset_thm} it must be that $AB = BA$.
+\end{proof}
+
+\begin{fact}
+    $|AB| = |B| \cdot |A : A \cap B|$.
+\end{fact}
+
+\begin{theorem}[Second Isomorphism Theorem]
+    Given a group $G$, subgroups $A, B \leq G$ and $A \leq N_G(B)$, then \begin{enumerate}
+        \item $AB \leq G$.
+        \item $B \trianglelefteq AB$.
+        \item $A \cap B \trianglelefteq A$.
+        \item $A/(A \cap B) \simeq (AB)/B$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Third Isomorphism Theorem]
+    Given a group $G$ and normal subgroups $H, K \trianglelefteq G$ such that $K \leq H \leq G$. Then, $(G/K)/(H/K) \simeq G/H$.
+\end{theorem}
+
+\begin{theorem}[Fourth Isomorphism Theorem]
+    Given $N \trianglelefteq G$, then the number of subgroups of $G/N$ has an equal cardinality to the subgroups of $G$ containing $N$.
+\end{theorem}
 \end{document}
